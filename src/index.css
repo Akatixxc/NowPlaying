@@ -1,0 +1,14 @@
+/* Import google fonts */
+@import url('https://fonts.googleapis.com/css?family=Rubik');
+
+/* Required for canvas to work */
+html,
+body,
+#root,
+canvas {
+    background-color: #191414;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}

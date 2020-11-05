@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { usePalette } from 'react-palette';
+
 import Profile from './Profile';
 import request from '../helpers/apiHelper';
 import Background from './Background/Background';
@@ -84,7 +85,7 @@ const NowPlaying = () => {
     }
 
     return (
-        <div style={{ background: 'white' }}>
+        <div>
             <Profile />
             <Background
                 song={currentSong.name}
