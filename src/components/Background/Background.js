@@ -5,7 +5,6 @@ import { useSpring, a } from 'react-spring/three';
 import { OrbitControls } from 'drei';
 import { MeshLine, MeshLineMaterial } from 'three.meshline';
 
-import '../../style.css';
 import Text from './Text';
 import FlickeringLight from './FlickeringLight';
 import WaveVisualizer from './WaveVisualizer';

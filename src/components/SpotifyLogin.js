@@ -1,5 +1,37 @@
 import React from 'react';
 
+import Logo from './Logo';
+
+const containerStyle = {
+    height: '100%',
+};
+
+const centeredContainerStyle = {
+    height: '100%',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    flexDirection: 'column',
+};
+
+const loginButtonStyle = {
+    color: '#fff',
+    fontFamily: 'Rubik',
+    fontWeight: 'thin',
+    fontSize: '1rem',
+    background: '#1DB954',
+    padding: '16px 24px',
+    border: 0,
+    borderRadius: '6px',
+};
+
+const textStyle = {
+    fontFamily: 'Rubik',
+    fontSize: '1rem',
+    color: '#ffffff80',
+    margin: '0.5rem 0 1rem 0',
+};
+
 const SpotifyLogin = () => {
     // helper function to generate a random string
     const makeid = length => {
@@ -60,10 +92,14 @@ const SpotifyLogin = () => {
     };
 
     return (
-        <div className="App">
-            <button type="submit" onClick={initiateSpotifyLogin}>
-                Log in with spotify
-            </button>
+        <div style={containerStyle}>
+            <div style={centeredContainerStyle}>
+                <Logo size={2} />
+                <p style={textStyle}>an audio visualizer for Spotify</p>
+                <button type="submit" onClick={initiateSpotifyLogin} style={loginButtonStyle}>
+                    Login with Spotify
+                </button>
+            </div>
         </div>
     );
 };
