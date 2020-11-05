@@ -1,26 +1,20 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import SpotifyLogin from './components/SpotifyLogin';
+import SpotifyAuthRedirect from './components/SpotifyAuthRedirect';
+import NowPlaying from './components/NowPlaying';
+import PrivateRoute from './components/PrivateRoute';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+const App = () => {
+    return (
+        <Router>
+            <Switch>
+                <PrivateRoute exact path="/" component={NowPlaying} />
+                <Route path="/login" component={SpotifyLogin} />
+                <Route path="/auth" component={SpotifyAuthRedirect} />
+            </Switch>
+        </Router>
+    );
+};
 
 export default App;
