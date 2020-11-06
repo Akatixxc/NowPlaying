@@ -81,7 +81,7 @@ const NowPlaying = () => {
         };
     });
 
-    // Refreshes the song after 1000 ms
+    // Used by OverlayHudControls. Refreshes the song after 1000 ms
     const refresh = () => {
         setCurrentSong({
             ...currentSong,

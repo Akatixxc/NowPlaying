@@ -23,13 +23,25 @@ const buttonStyle = {
 const ControlsOverlayHud = props => {
     const { onClickRefresh } = props;
 
+    const fullscreen = () => {
+        if (!document.fullscreenElement) {
+            document.documentElement.requestFullscreen();
+        } else if (document.exitFullscreen) {
+            document.exitFullscreen();
+        }
+    };
+
+    const fullscreenText = () => {
+        return !document.fullscreenElement ? 'Fullscreen' : 'Exit Fullscreen';
+    };
+
     return (
         <div style={containerStyle}>
-            <button style={buttonStyle} type="submit" onClick={onClickRefresh}>
+            <button style={buttonStyle} type="button" onClick={onClickRefresh}>
                 Refresh
             </button>
-            <button style={buttonStyle} type="submit">
-                Fullscreen
+            <button style={buttonStyle} type="button" onClick={fullscreen}>
+                {fullscreenText()}
             </button>
         </div>
     );
