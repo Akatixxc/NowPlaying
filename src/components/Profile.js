@@ -2,37 +2,34 @@ import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import request from '../helpers/apiHelper';
 
-const headerStyle = {
-    position: 'absolute',
-    zIndex: '99',
-    width: '100%',
-    padding: '50px 0px 50px 0px',
-};
-
-const headerInnerStyle = {
+const containerStyle = {
     display: 'flex',
-    justifyContent: 'flex-end',
 };
 
 const profilePictureStyle = {
     height: '50px',
-    border: '1px solid #333',
+    border: '2px solid #ffffff99',
     borderRadius: '50px',
-    margin: '0 25px 0 0',
+    margin: 'auto 24px auto auto',
 };
 
 const nameStyle = {
-    fontFamily: 'Roboto',
-    margin: 'auto 50px auto 0',
+    fontFamily: 'Rubik',
+    fontSize: '1rem',
+    color: '#fff',
+    margin: 'auto 24px auto auto',
 };
 
-const logoutButton = {
+// TODO: add icons inside buttons
+const buttonStyle = {
     color: '#fff',
-    fontWeight: '600',
-    background: '#333',
+    fontFamily: 'Rubik',
+    fontSize: '1rem',
+    background: 0,
     padding: '16px 24px',
+    border: 1,
     borderRadius: '6px',
-    margin: '0 50px 0 0',
+    margin: 'auto 24px auto auto',
 };
 
 const Profile = () => {
@@ -59,14 +56,12 @@ const Profile = () => {
     };
 
     return (
-        <div style={headerStyle}>
-            <div style={headerInnerStyle}>
-                <img style={profilePictureStyle} src={profile.picture} alt="" />
-                <p style={nameStyle}>{profile.name}</p>
-                <button type="submit" style={logoutButton} onClick={deleteAccessToken}>
-                    LOGOUT
-                </button>
-            </div>
+        <div style={containerStyle}>
+            <p style={nameStyle}>{profile.name}</p>
+            <img style={profilePictureStyle} src={profile.picture} alt="" />
+            <button type="submit" style={buttonStyle} onClick={deleteAccessToken}>
+                Logout
+            </button>
         </div>
     );
 };

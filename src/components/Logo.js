@@ -17,16 +17,16 @@ const Logo = props => {
         MozUserSelect: 'none',
         WebkitUserSelect: 'none',
         msUserSelect: 'none',
-        style,
+        ...style,
     };
 
     const nowStyle = {
-        margin: `${size}rem 0 0 0`,
+        margin: `${(size * 2) / 3}rem 0 0 0`,
         lineHeight: `${size}rem`,
     };
 
     const playingStyle = {
-        margin: '0 0 0 0',
+        margin: `0 0 ${size / 3}rem 0`,
     };
 
     return (

@@ -1,9 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import { usePalette } from 'react-palette';
 
-import Profile from './Profile';
+import OverlayHud from './OverlayHud';
 import request from '../helpers/apiHelper';
 import Background from './Background/Background';
+
+// This container is Canvases parent so it needs to be full screen
+const containerStyle = {
+    width: '100%',
+    height: '100%',
+};
 
 /**
  * Fetches:
@@ -75,18 +81,18 @@ const NowPlaying = () => {
         };
     });
 
-    // For debugging
-    function refresh() {
+    // Refreshes the song after 1000 ms
+    const refresh = () => {
         setCurrentSong({
             ...currentSong,
             progress: 0,
             duration: 1000,
         });
-    }
+    };
 
     return (
-        <div>
-            <Profile />
+        <div style={containerStyle}>
+            <OverlayHud onClickRefresh={refresh} />
             <Background
                 song={currentSong.name}
                 artist={currentSong.artist}
@@ -97,10 +103,6 @@ const NowPlaying = () => {
                 sections={analysis.sections}
                 energy={features.energy}
             />
-
-            <button type="button" onClick={() => refresh()}>
-                Refresh
-            </button>
         </div>
     );
 };
