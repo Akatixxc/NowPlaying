@@ -29,7 +29,7 @@ const textStyle = {
     fontFamily: 'Rubik',
     fontSize: '1rem',
     color: '#ffffff80',
-    margin: '0.5rem 0 1rem 0',
+    margin: '0 0 1rem 0',
 };
 
 const SpotifyLogin = () => {
