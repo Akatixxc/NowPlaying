@@ -18,18 +18,23 @@ const buttonStyle = {
 };
 
 /**
- * @param {function} onClickRefresh Function that is called onClick.
+ * @param {function} onClickSync Function that is called onClick.
+ * @param {function} onClickFullscreen Function that is called onClick.
  */
 const ControlsOverlayHud = props => {
-    const { onClickRefresh } = props;
+    const { onClickSync, onClickFullscreen } = props;
+
+    const fullscreenText = () => {
+        return !document.fullscreenElement ? 'Fullscreen' : 'Exit Fullscreen';
+    };
 
     return (
         <div style={containerStyle}>
-            <button style={buttonStyle} type="submit" onClick={onClickRefresh}>
-                Refresh
+            <button style={buttonStyle} type="button" onClick={onClickSync}>
+                Synchronize
             </button>
-            <button style={buttonStyle} type="submit">
-                Fullscreen
+            <button style={buttonStyle} type="button" onClick={onClickFullscreen}>
+                {fullscreenText()}
             </button>
         </div>
     );

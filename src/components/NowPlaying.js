@@ -74,25 +74,35 @@ const NowPlaying = () => {
             }
         };
 
-        const interval = setInterval(() => getCurrentSong(), currentSong.duration - currentSong.progress + 1000);
+        const minInterval = 1000; // Minimum amount of ms every interval takes in useEffect
+        const interval = setInterval(() => getCurrentSong(), currentSong.duration - currentSong.progress + minInterval);
 
         return () => {
             clearInterval(interval);
         };
     });
 
-    // Refreshes the song after 1000 ms
-    const refresh = () => {
+    // Used by OverlayHudControls.
+    const sync = () => {
         setCurrentSong({
             ...currentSong,
             progress: 0,
-            duration: 1000,
+            duration: 0,
         });
+    };
+
+    const fullscreen = () => {
+        if (!document.fullscreenElement) {
+            document.documentElement.requestFullscreen();
+        } else if (document.exitFullscreen) {
+            document.exitFullscreen();
+        }
+        sync();
     };
 
     return (
         <div style={containerStyle}>
-            <OverlayHud onClickRefresh={refresh} />
+            <OverlayHud onClickSync={sync} onClickFullscreen={fullscreen} />
             <Background
                 song={currentSong.name}
                 artist={currentSong.artist}

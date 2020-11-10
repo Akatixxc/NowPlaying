@@ -32,10 +32,10 @@ const dividerStyle = {
 };
 
 /**
- * @param {function} onClickRefresh Function that is passed for OverlayHudControls component.
+ * @param {function} onClickSync Function that is passed for OverlayHudControls component.
  */
 const OverlayHud = props => {
-    const { onClickRefresh } = props;
+    const { onClickSync, onClickFullscreen } = props;
     const [hudTop, setHudTop] = useState(0);
     const hudHeight = 150;
 
@@ -52,7 +52,7 @@ const OverlayHud = props => {
         >
             <div style={hudContainerStyle(hudHeight)}>
                 <Logo size={1.3} style={logoStyle} />
-                <ControlsOverlayHud onClickRefresh={onClickRefresh} />
+                <ControlsOverlayHud onClickSync={onClickSync} onClickFullscreen={onClickFullscreen} />
                 <div style={dividerStyle} />
                 <Profile />
             </div>
