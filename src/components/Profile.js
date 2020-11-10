@@ -63,6 +63,10 @@ const Profile = () => {
     const deleteAccessToken = () => {
         sessionStorage.clear();
         history.push('/login');
+
+        if (document.exitFullscreen) {
+            document.exitFullscreen();
+        }
     };
 
     return (
