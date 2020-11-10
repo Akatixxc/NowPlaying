@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
+
 import request from '../helpers/apiHelper';
+import LogoutIcon from './svg/LogoutIcon';
 
 const containerStyle = {
     display: 'flex',
@@ -15,21 +17,29 @@ const profilePictureStyle = {
 
 const nameStyle = {
     fontFamily: 'Rubik',
+    fontWeight: '500',
     fontSize: '1rem',
     color: '#fff',
     margin: 'auto 24px auto auto',
 };
 
-// TODO: add icons inside buttons
 const buttonStyle = {
     color: '#fff',
     fontFamily: 'Rubik',
+    fontWeight: '500',
     fontSize: '1rem',
     background: 0,
     padding: '16px 24px',
     border: 1,
     borderRadius: '6px',
     margin: 'auto 24px auto auto',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+};
+
+const iconContainerStyle = {
+    margin: 'auto 12px auto auto',
 };
 
 const Profile = () => {
@@ -60,6 +70,7 @@ const Profile = () => {
             <p style={nameStyle}>{profile.name}</p>
             <img style={profilePictureStyle} src={profile.picture} alt="" />
             <button type="submit" style={buttonStyle} onClick={deleteAccessToken}>
+                <LogoutIcon style={iconContainerStyle} />
                 Logout
             </button>
         </div>

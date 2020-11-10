@@ -12,7 +12,7 @@ const Logo = props => {
     const logoDivStyle = {
         fontFamily: 'Rubik',
         fontSize: `${size * 2}rem`,
-        fontWeight: 'bold',
+        fontWeight: '500',
         color,
         MozUserSelect: 'none',
         WebkitUserSelect: 'none',
