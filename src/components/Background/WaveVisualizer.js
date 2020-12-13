@@ -35,6 +35,9 @@ const WaveVisualizer = props => {
     let waveLength = 0;
     let velocity = 0; // Increase between frames to make the wave move
 
+    // Makes the wave amplitude higher around 50 (x = 0)
+    const adjustMiddle = point => 1 - Math.abs(point - linePathPoints / 2) / linePathPoints;
+
     useFrame(() => {
         clockProgress = clock.getElapsedTime() + progress / 1000;
         linePath = [];
@@ -61,7 +64,7 @@ const WaveVisualizer = props => {
         waveLength = 0.06 + pitch / 24;
         for (let point = 0; point < linePathPoints; point += 1) {
             linePath.push(lineX + (lineLength / linePathPoints) * point);
-            linePath.push(Math.sin(point * waveLength - velocity) * amplitude + lineY);
+            linePath.push(adjustMiddle(point) * Math.sin(point * waveLength - velocity) * amplitude + lineY);
             linePath.push(lineZ);
         }
         ref.current.setPoints(linePath);
