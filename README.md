@@ -1,68 +1,61 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# NowPlaying
 
-## Available Scripts
+NowPlaying is an audiovisualizer for Spotify.
 
-In the project directory, you can run:
+## What it does
 
-### `yarn start`
+<a href="http://www.youtube.com/watch?feature=player_embedded&v=yOU-b0THmAc
+" target="_blank"><img src="http://img.youtube.com/vi/yOU-b0THmAc/0.jpg" 
+alt="Link" width="240" height="180" border="10" /></a>
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+(Mouse middle click to open the video in new tab)
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+NowPlaying can be used as an background which lives with your music.
 
-### `yarn test`
+## How it works
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Technologies used
 
-### `yarn build`
+* React.js
+* Three.js
+* Spotify API https://developer.spotify.com/documentation/web-api/
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Login
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+Logging into NowPlaying happens through Spotify.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+[![Link](https://i.imgur.com/Cq9V9CE.jpgF)](https://i.imgur.com/Cq9V9CE.jpg)
 
-### `yarn eject`
+### Currently playing song
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+NowPlaying requests users currently playing song from spotify API.
+If user is not listening to anything the default screen will play.
+NowPlaying requests users currently playing song once the last song has ended, every 30 seconds, when user presses synchronize button or when user goes fullscreen (because this causes Three.js to rerender the canvas again with old song position).
+Once having the songID of currently playing song three more requestss are made: audio features, audio analysis and currently playing song (again to reduce latency).
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Audio features and analysis are used to figure you the songs loudness, energy, segments, sections, etc.
+This data is used to animate the flickering light and wave.
+The effects and their aggressiveness are based on the songs energy variable given by Spotify giving calm songs slower effects and energetic songs faster. 
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+The user has to press "Synchronize" after changing the song before it has ended as NowPlaying wont poll currently playing song (to not make too many API calls).
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+Spotify API requests are made with the users own API key instead of NowPlayings. This means that I do not need to worry about running out of API calls.
 
-## Learn More
+Documentation for Spotify API tracks: https://developer.spotify.com/documentation/web-api/reference/tracks/
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Header
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+You can synchronize to fetch the currently playing song again, go fullscreen or logout.
 
-### Code Splitting
+The header has smooth onHover effect.
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+[![Link](https://s2.gifyu.com/images/ezgif.com-gif-maker-44f61063b3a727b08.gif)](https://s2.gifyu.com/images/ezgif.com-gif-maker-44f61063b3a727b08.gif)
 
-### Analyzing the Bundle Size
+## TODO
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+* Fix monitor refreshrate affecting canvas framerate (cap to 60fps)
+* Fix error on logout
+* Better error handling
+* Create notification snackbar
 
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `yarn build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+I am planning on deploying this once it is finished.
