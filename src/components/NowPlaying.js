@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { usePalette } from 'react-palette';
+//import { usePalette } from 'react-palette';
 
 import OverlayHud from './OverlayHud';
 import request from '../helpers/apiHelper';
@@ -34,8 +34,15 @@ const NowPlaying = () => {
         sections: [],
     }));
 
-    const { data: palette } = usePalette(currentSong.album);
-
+    //const { data: palette } = usePalette(currentSong.album);
+    const { data: palette } = {
+        darkMuted: "#2a324b",
+        darkVibrant: "#0e7a4b",
+        lightMuted: "#9cceb7",
+        lightVibrant: "#a4d4bc",
+        muted: "#64aa8a",
+        vibrant: "#b4d43c"
+    };
     useEffect(() => {
         const getCurrentSong = async () => {
             try {

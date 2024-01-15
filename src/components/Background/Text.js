@@ -2,13 +2,14 @@
 /* eslint-disable no-param-reassign */
 import * as THREE from 'three';
 import React, { forwardRef, useMemo } from 'react';
-import { useLoader, useUpdate } from 'react-three-fiber';
+import { useFont } from '@react-three/drei';
+import { useFrame } from '@react-three/fiber';
 
 const Text = forwardRef((props, ref) => {
     const { children, vAlign = 'center', hAlign = 'center', size = 1, position } = props;
-    const font = useLoader(THREE.FontLoader, 'helvetiker_bold.typeface.json');
+    const font = useFont('helvetiker_bold.typeface.json');
     const config = useMemo(() => ({ font, size: 10, height: 1 }), [font]);
-    const mesh = useUpdate(
+    const mesh = useFrame(
         self => {
             const boxSize = new THREE.Vector3();
             self.geometry.computeBoundingBox();

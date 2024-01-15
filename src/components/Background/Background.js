@@ -1,9 +1,8 @@
 import React, { Suspense, useRef } from 'react';
 import * as THREE from 'three';
-import { Canvas, extend, useLoader, useFrame } from 'react-three-fiber';
-import { useSpring, a } from 'react-spring/three';
-import { OrbitControls } from 'drei';
-import { MeshLine, MeshLineMaterial } from 'three.meshline';
+import { Canvas, extend, useLoader, useFrame } from '@react-three/fiber';
+import { useSpring, a } from 'react-spring';
+import { OrbitControls, Trail /*, MeshLineMaterial*/ } from '@react-three/drei';
 
 import Text from './Text';
 import FlickeringLight from './FlickeringLight';
@@ -14,7 +13,7 @@ import WaveVisualizer from './WaveVisualizer';
  OrbitControls is used in CustomCamera
  MeshLine and MeshLineMaterial are used in WaveVisualizer
  */
-extend({ OrbitControls, MeshLine, MeshLineMaterial });
+extend({ OrbitControls, Trail /*, MeshLineMaterial*/ });
 
 /**
  * @param {string} url Album cover url.

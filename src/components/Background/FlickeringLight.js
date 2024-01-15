@@ -1,7 +1,7 @@
 import React, { useRef } from 'react';
 import * as THREE from 'three';
-import { useFrame } from 'react-three-fiber';
-import { a } from 'react-spring/three';
+import { useFrame } from '@react-three/fiber';
+import { a } from 'react-spring';
 import getCount from '../../helpers/arrayHelper';
 
 /*

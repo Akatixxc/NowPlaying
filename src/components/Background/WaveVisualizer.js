@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
 import * as THREE from 'three';
-import { useFrame } from 'react-three-fiber';
+import { useFrame } from '@react-three/fiber';
 import getCount from '../../helpers/arrayHelper';
 
 /**
@@ -73,7 +73,7 @@ const WaveVisualizer = props => {
     return (
         <mesh>
             <meshLine ref={ref} attach="geometry" />
-            <meshLineMaterial attach="material" transparent opacity={0.5} lineWidth={0.05} color="white" />
+            {/*<meshLineMaterial attach="material" transparent opacity={0.5} lineWidth={0.05} color="white" />*/}
         </mesh>
     );
 };

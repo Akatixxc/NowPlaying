@@ -3,8 +3,8 @@ module.exports = {
     browser: true,
     es6: true,
   },
-  parser: 'babel-eslint',
-  extends: ['airbnb', 'prettier', 'prettier/react'],
+  parser: '@babel/eslint-parser',
+  extends: ['airbnb', 'prettier'],
   globals: {
     Atomics: 'readonly',
     SharedArrayBuffer: 'readonly',

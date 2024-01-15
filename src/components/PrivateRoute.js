@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Route, Redirect } from 'react-router-dom';
+import { Navigate } from 'react-router-dom';
 
 /**
  * Private route checks if user has spotify-access-token.
@@ -19,9 +19,9 @@ const PrivateRoute = ({ component: Component }) => {
             setLoading(false);
             setTokenExists(false);
         }
-    }, []);
+    });
 
-    function direct(props) {
+    function direct() {
         if (loading) {
             return (
                 <div>
@@ -30,19 +30,14 @@ const PrivateRoute = ({ component: Component }) => {
             );
         }
         if (tokenExists) {
+            console.log('Component');
             return <Component />;
         }
-        return (
-            <Redirect
-                to={{
-                    pathname: '/login',
-                    state: { from: props.location },
-                }}
-            />
-        );
+        console.log('navigate');
+        return <Navigate to={'/login'} />;
     }
 
-    return <Route render={props => direct(props)} />;
+    return direct();
 };
 
 export default PrivateRoute;

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import { redirect } from 'react-router-dom';
 
 import request from '../helpers/apiHelper';
 import LogoutIcon from './svg/LogoutIcon';
@@ -43,7 +43,6 @@ const iconContainerStyle = {
 };
 
 const Profile = () => {
-    const history = useHistory();
     const [profile, setProfile] = useState({
         name: '',
         picture: '',
@@ -62,7 +61,7 @@ const Profile = () => {
 
     const deleteAccessToken = () => {
         sessionStorage.clear();
-        history.push('/login');
+        redirect('/login');
 
         if (document.exitFullscreen) {
             document.exitFullscreen();
