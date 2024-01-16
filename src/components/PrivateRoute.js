@@ -8,36 +8,36 @@ import { Navigate } from 'react-router-dom';
  * @param {Component} component Component contains NowPlaying component.
  */
 const PrivateRoute = ({ component: Component }) => {
-    const [loading, setLoading] = useState(true);
-    const [tokenExists, setTokenExists] = useState(false);
+	const [loading, setLoading] = useState(true);
+	const [tokenExists, setTokenExists] = useState(false);
 
-    useEffect(() => {
-        if (sessionStorage.getItem('spotify-access-token') !== null) {
-            setLoading(false);
-            setTokenExists(true);
-        } else {
-            setLoading(false);
-            setTokenExists(false);
-        }
-    });
+	useEffect(() => {
+		if (sessionStorage.getItem('spotify-access-token') !== null) {
+			setLoading(false);
+			setTokenExists(true);
+		} else {
+			setLoading(false);
+			setTokenExists(false);
+		}
+	});
 
-    function direct() {
-        if (loading) {
-            return (
-                <div>
-                    <p>loading</p>
-                </div>
-            );
-        }
-        if (tokenExists) {
-            console.log('Component');
-            return <Component />;
-        }
-        console.log('navigate');
-        return <Navigate to={'/login'} />;
-    }
+	function direct() {
+		if (loading) {
+			return (
+				<div>
+					<p>loading</p>
+				</div>
+			);
+		}
+		if (tokenExists) {
+			console.log('Component');
+			return <Component />;
+		}
+		console.log('navigate');
+		return <Navigate to={'/login'} />;
+	}
 
-    return direct();
+	return direct();
 };
 
 export default PrivateRoute;

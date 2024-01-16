@@ -4,7 +4,7 @@
  * @returns {integer} Index of the current segment, section, etc.
  */
 const getCount = (array, progress) => {
-    return array.findIndex(startingTime => startingTime >= progress / 1000) - 1;
+	return array.findIndex((startingTime) => startingTime >= progress / 1000) - 1;
 };
 
 export default getCount;
