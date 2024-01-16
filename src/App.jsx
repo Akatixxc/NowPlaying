@@ -8,22 +8,22 @@ import PrivateRoute from './components/PrivateRoute';
 import './index.css';
 
 const router = createBrowserRouter([
-	{
-		path: '/',
-		element: <PrivateRoute Component={<NowPlaying />} />,
-	},
-	{
-		path: '/login',
-		element: <SpotifyLogin />,
-	},
-	{
-		path: '/auth',
-		element: <SpotifyAuthRedirect />,
-	},
+    {
+        path: '/',
+        element: <PrivateRoute Component={<NowPlaying />} />,
+    },
+    {
+        path: '/login',
+        element: <SpotifyLogin />,
+    },
+    {
+        path: '/auth',
+        element: <SpotifyAuthRedirect />,
+    },
 ]);
 
-const App = () => {
-	return <RouterProvider router={router} />;
-};
+function App() {
+    return <RouterProvider router={router} />;
+}
 
 export default App;
